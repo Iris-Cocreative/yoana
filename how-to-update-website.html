@@ -573,6 +573,96 @@
 
     <hr class="guide-divider">
 
+    <!-- =================== DOMAIN SECTION =================== -->
+    <div>
+      <div class="section-eyebrow" style="text-align:center; margin-bottom:12px;">When You're Ready</div>
+      <h2 class="section-title" style="text-align:center; font-size:clamp(28px,3vw,40px); margin-bottom:8px;">Connecting your <em>own domain</em></h2>
+      <p style="text-align:center; color:var(--ink-soft); font-size:16px; max-width:540px; margin:0 auto 48px; line-height:1.6;">Right now your site lives at a GitHub address. When you're ready to move to your own domain (like <em>yoanatchoukleva.com</em>), here's how it works.</p>
+
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-number-col">
+            <div class="step-num">1</div>
+          </div>
+          <div class="step-content">
+            <div class="step-eyebrow">Buy a Domain</div>
+            <h2>Purchase your <em>domain name</em></h2>
+            <p>If you don't have one yet, buy a domain from a registrar. Good options are <strong>Squarespace Domains</strong>, <strong>Namecheap</strong>, or <strong>Google Domains</strong>. Search for the name you want and follow their checkout process — it's usually $10–20/year.</p>
+            <div class="callout">
+              <strong>Already have a domain?</strong> Skip straight to Step 2.
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number-col">
+            <div class="step-num">2</div>
+          </div>
+          <div class="step-content">
+            <div class="step-eyebrow">Point Your Domain at GitHub</div>
+            <h2>Update your <em>DNS settings</em></h2>
+            <p>Log in to wherever you bought your domain and find the <strong>DNS settings</strong> (sometimes called "Manage DNS" or "Advanced DNS"). You need to add four <strong>A records</strong> pointing to GitHub's servers:</p>
+            <div class="instruction-card">
+              <ol>
+                <li>Find the <strong>DNS settings</strong> panel for your domain.</li>
+                <li>Delete any existing A records pointing to the root domain (<code>@</code>).</li>
+                <li>Add four new <strong>A records</strong> with the host set to <strong>@</strong> and these IP addresses, one per record:<br><br>
+                  <code style="display:block; background:var(--bg-warm); padding:12px 16px; border-radius:6px; margin-top:8px; font-size:13px; line-height:2;">
+                    185.199.108.153<br>
+                    185.199.109.153<br>
+                    185.199.110.153<br>
+                    185.199.111.153
+                  </code>
+                </li>
+                <li>Also add a <strong>CNAME record</strong> with host <strong>www</strong> pointing to <strong>iris-cocreative.github.io</strong></li>
+                <li>Save your changes. DNS can take up to 24 hours to fully propagate, but usually updates within an hour.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number-col">
+            <div class="step-num">3</div>
+          </div>
+          <div class="step-content">
+            <div class="step-eyebrow">Tell GitHub Your Domain</div>
+            <h2>Set the domain in <em>GitHub Pages</em></h2>
+            <div class="instruction-card">
+              <ol>
+                <li>Go to <strong>github.com/Iris-Cocreative/yoana</strong></li>
+                <li>Click <strong>Settings</strong> (top navigation bar of the repository).</li>
+                <li>Scroll down to the <strong>Pages</strong> section in the left sidebar.</li>
+                <li>Under <strong>"Custom domain,"</strong> type your domain name (e.g. <em>yoanatchoukleva.com</em>) and click <strong>Save.</strong></li>
+                <li>Check the box for <strong>"Enforce HTTPS"</strong> once it becomes available (may take a few minutes). This gives your site a secure padlock in the browser.</li>
+              </ol>
+            </div>
+            <div class="callout">
+              <strong>After saving,</strong> GitHub will verify that the DNS is connected correctly. You'll see a green checkmark when everything is working. If it shows an error, just wait an hour and try again — DNS changes take time to spread.
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number-col">
+            <div class="step-num">4</div>
+          </div>
+          <div class="step-content">
+            <div class="step-eyebrow">Done</div>
+            <h2>Your site is live at <em>your domain</em></h2>
+            <p>Once GitHub shows a green checkmark, visit your domain in a browser and you'll see your site. GitHub will automatically redirect <em>iris-cocreative.github.io/yoana</em> to your new domain, so any old links keep working.</p>
+            <div class="callout">
+              <strong>Need help with any of these steps?</strong> Just ask Claude — describe what screen you're looking at and it can walk you through it. Or reach out to your web team below.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <hr class="guide-divider">
+
     <!-- CONTACT ASSIST -->
     <div style="text-align:center; background:#ffffff; border:1px solid var(--line); border-radius:12px; padding:48px 40px;">
       <h3 style="font-family:'Fraunces',serif; font-size:28px; margin-bottom:12px;">Need help?</h3>
