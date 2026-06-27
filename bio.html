@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bio — Yoana Tchoukleva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="logo-mark.svg">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .bio-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    padding: 80px 0;
+  }
+  @media (max-width: 860px) {
+    .bio-hero { grid-template-columns: 1fr; }
+  }
+  .bio-portrait-large {
+    aspect-ratio: 4/5;
+    border-radius: 4px;
+    background: url('assets/yoana-portrait-butterfly-book.jpg') center/cover no-repeat;
+    box-shadow: 0 30px 60px -20px rgba(35,5,0,0.25);
+    position: relative;
+    overflow: hidden;
+  }
+  .bio-intro h2 {
+    font-size: clamp(36px, 4.4vw, 56px);
+    margin-bottom: 24px;
+  }
+  .bio-intro h2 em { font-style: italic; color: var(--red); font-variation-settings: "SOFT" 100; }
+  .bio-intro .lede {
+    font-family: 'Fraunces', serif;
+    font-size: 22px; font-style: italic;
+    color: var(--ink-soft);
+    line-height: 1.45;
+    margin-bottom: 24px;
+  }
+  .identity-line {
+    margin: 22px 0 28px;
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--green-deep);
+    border-left: 3px solid var(--sun);
+    padding-left: 18px;
+  }
+
+  .bio-narrative {
+    background: url('assets/texture.jpg') center/cover, var(--bg-warm);
+    padding: 100px 0;
+  }
+  .bio-narrative .narrow p {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+    font-weight: 350;
+  }
+  .bio-narrative .narrow p.pullquote {
+    font-size: 32px; font-style: italic;
+    color: var(--red); text-align: center;
+    margin: 48px 0;
+    line-height: 1.3;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 32px 0;
+  }
+  .bio-narrative h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    margin: 48px 0 20px;
+    color: var(--ink);
+  }
+  .bio-image-wide {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    height: 56vh;
+    max-height: 520px;
+    margin-top: 48px;
+    margin-bottom: 48px;
+    background: url('assets/workshop-cohort-group.jpg') center/cover no-repeat;
+  }
+  .bio-image-caption {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-mute);
+    text-align: center;
+    margin-top: -32px;
+    margin-bottom: 48px;
+  }
+
+  .timeline {
+    background: var(--bg);
+    padding: 100px 0;
+  }
+  .timeline-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 48px;
+  }
+  @media (max-width: 720px) {
+    .timeline-grid { grid-template-columns: 1fr; }
+  }
+  .timeline-list {
+    list-style: none;
+    border-left: 2px solid var(--sun);
+    padding-left: 32px;
+  }
+  .timeline-list li {
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .timeline-list li::before {
+    content: "";
+    position: absolute;
+    left: -41px; top: 6px;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--red);
+  }
+  .timeline-list .role {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .timeline-list .org {
+    font-size: 14px;
+    color: var(--red);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .timeline-list .desc {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  .current-roles {
+    background: linear-gradient(135deg, var(--green-deep) 0%, #335f6a 50%, var(--bay-deep) 100%);
+    color: #fbf3df;
+    padding: 100px 0;
+  }
+  .current-roles h2 { color: #fbf3df; }
+  .current-roles h2 em { color: var(--sun); }
+  .current-roles .section-eyebrow { color: var(--sun); }
+  .roles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .role-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 28px;
+  }
+  .role-card .role {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: #fbf3df;
+  }
+  .role-card .org {
+    font-size: 13px;
+    color: var(--sun);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 12px;
+  }
+  .role-card p {
+    font-size: 14px;
+    color: #d4c19f;
+    line-height: 1.6;
+  }
+
+  /* HONORS & SKILLS */
+  .recognition { background: var(--bg); padding: 100px 0; }
+  .recognition-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  @media (max-width: 860px) {
+    .recognition-grid { grid-template-columns: 1fr; gap: 48px; }
+  }
+  .awards-list { list-style: none; padding: 0; margin-top: 32px; }
+  .awards-list li {
+    display: flex;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line-soft);
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .awards-list li:last-child { border-bottom: none; }
+  .awards-list .yr {
+    flex-shrink: 0;
+    width: 78px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--red);
+    font-variation-settings: "SOFT" 50;
+  }
+  .skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 32px;
+  }
+  .skills-tags span {
+    background: var(--bg-warm);
+    border: 1px solid var(--green);
+    color: var(--green-deep);
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+
+  /* IDENTITY MARQUEE (scrolling roles across the bottom of the hero) */
+  .page-header.bio-header { padding-bottom: 0; }
+  .identity-marquee {
+    position: relative; z-index: 1;
+    margin-top: 36px;
+    overflow: hidden;
+    border-top: 1px solid var(--line);
+    padding: 16px 0;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+  }
+  .identity-marquee-track {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    will-change: transform;
+    animation: identity-scroll 40s linear infinite;
+  }
+  .identity-marquee-track span {
+    flex-shrink: 0;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 19px;
+    color: var(--ink-soft);
+  }
+  .identity-marquee-track span::after {
+    content: "·";
+    color: var(--sun-deep);
+    margin: 0 22px;
+    font-style: normal;
+  }
+  @keyframes identity-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .identity-marquee-track { animation: none; }
+  }
+  .sr-only {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo logo-full">
+      <span class="logo-mark"><img src="logo-mark.svg" alt="" /></span>
+      <span class="logo-name"><span>Yoana</span><span>Tchoukleva</span></span>
+    </a>
+    <ul class="nav-tabs">
+      <li><a href="bio.html" class="active">Bio</a></li>
+      <li><a href="offerings.html">Offerings</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header bio-header">
+  <div class="container">
+    <div class="section-eyebrow">About</div>
+    <h1>Yoana <em>Tchoukleva</em></h1>
+    <p class="sr-only">Attorney · Lecturer at Berkeley Law · Restorative Justice Circle Keeper · Policy Analyst · Legislative Strategist · Community Organizer · Change Maker · Bridge Builder · Mother</p>
+  </div>
+  <div class="identity-marquee" aria-hidden="true">
+    <div class="identity-marquee-track">
+      <span>Attorney</span><span>Lecturer at Berkeley Law</span><span>Restorative Justice Circle Keeper</span><span>Policy Analyst</span><span>Legislative Strategist</span><span>Community Organizer</span><span>Change Maker</span><span>Bridge Builder</span><span>Mother</span><span>Attorney</span><span>Lecturer at Berkeley Law</span><span>Restorative Justice Circle Keeper</span><span>Policy Analyst</span><span>Legislative Strategist</span><span>Community Organizer</span><span>Change Maker</span><span>Bridge Builder</span><span>Mother</span>
+    </div>
+  </div>
+</header>
+
+<!-- INTRO + PORTRAIT -->
+<section style="padding: 80px 0; background: var(--bg);">
+  <div class="container">
+    <div class="bio-hero">
+      <div class="bio-portrait-large" aria-label="Photo of Yoana"></div>
+      <div class="bio-intro">
+        <h2>Realizing a <em>community-led vision</em> for justice.</h2>
+        <p class="lede">Yoana Tchoukleva (formally "Ioana") (she/they) is an attorney, restorative justice circle keeper, and policy analyst dedicated to community-led justice — at home in Oakland and abroad.</p>
+        <a href="contact.html" class="btn">Work with Yoana <span class="btn-arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NARRATIVE BIO -->
+<section class="bio-narrative">
+  <div class="container">
+    <div class="narrow">
+      <div class="section-eyebrow">Long Bio</div>
+      <h2 class="section-title">A path from <em>Bulgaria to Oakland</em>.</h2>
+
+      <p>Yoana was born and raised in Bulgaria in a family torn apart by domestic violence, mental illness, and the intergenerational impacts of communism and colonialism. From an early age, she wanted to understand why good people do terrible things and how we can end both interpersonal and systemic violence.</p>
+
+      <p>It was moving to Oakland thirteen years ago and sitting in restorative justice circles in San Quentin and juvenile hall that taught her that it is, in fact, possible to end violence. It starts with creating practices and policies that allow our most vulnerable community members to heal from trauma and meet their material needs. It starts with investment in restorative justice, youth leaders, jobs, housing, healthcare, education, and all the basic needs that allow people to thrive.</p>
+
+      <p class="pullquote">"Nothing stops a bullet like a job. Nothing stops the killing like opportunities for healing."</p>
+    </div>
+  </div>
+
+  <div class="bio-image-wide" aria-label="Oakland community"></div>
+
+  <div class="container">
+    <div class="narrow">
+      <p class="bio-image-caption">Reentry Organizations Convening · Impact Justice, San Francisco.</p>
+
+      <h3>Education and early practice</h3>
+      <p>Tired of seeing her community hurting and equipped with a degree from <strong>Berkeley Law</strong>, Yoana set out to plant seeds for healing and transformation where there had been too much punishment and incarceration. She sought resentencing for individuals serving juvenile life without parole, clerked for <strong>Judge Thelton Henderson</strong> of the Northern District of California, worked on civil rights cases at the <strong>ACLU</strong> and <strong>Equal Justice Society</strong>, and fought to end the school-to-prison pipeline.</p>
+
+      <p>Seeing structural racism as one of the root causes of systemic violence, she drafted legislation that made implicit bias trainings a requirement for judges, attorneys, and doctors in the state. As <strong>Assistant District Attorney in the Restorative Justice Unit of the San Francisco District Attorney's Office</strong>, Yoana expanded access to restorative justice diversion in felony cases where the survivors chose a restorative justice approach.</p>
+
+      <h3>Today's work</h3>
+      <p>Currently, Yoana focuses on improving reentry systems at <strong>Impact Justice</strong>, teaches restorative justice diversion at <strong>Berkeley Law</strong>, and chairs the <strong>Oakland Public Safety Planning and Oversight Commission</strong> (OPSPOC), overseeing the expenditure of $47M on public safety services.</p>
+
+      <p>In her Democratic Party advocacy, Yoana is the Bay Area Vice Chair of the California Democratic Party Progressive Caucus and a Co-Chair of California Democrats for Justice in Palestine. She facilitates Re-storying Justice Jams with YES!, inspires young leaders to become politically active, and holds accountability processes in the community.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CAREER TIMELINE -->
+<section class="timeline">
+  <div class="container">
+    <div class="timeline-grid">
+      <div>
+        <div class="section-eyebrow">Career</div>
+        <h2 class="section-title">A path of <em>service</em>.</h2>
+        <p style="color: var(--ink-soft); font-size: 16px;">Twelve years of legal practice, advocacy, and community leadership across the Bay Area's most consequential justice institutions.</p>
+      </div>
+      <ul class="timeline-list">
+        <li>
+          <div class="role">Chair, Oakland Public Safety Planning &amp; Oversight Commission</div>
+          <span class="org">City of Oakland · Current</span>
+          <p class="desc">Overseeing $47M in Measure NN public safety funds and co-developing the city's first four-year community violence reduction plan.</p>
+        </li>
+        <li>
+          <div class="role">Lecturer at Law</div>
+          <span class="org">UC Berkeley School of Law · Current</span>
+          <p class="desc">Teaching the first ever course on restorative justice diversion at Berkeley Law, inspiring the next generation of attorneys to practice in a way that heals rather than harms.</p>
+        </li>
+        <li>
+          <div class="role">Senior Program Manager</div>
+          <span class="org">Impact Justice · Current</span>
+          <p class="desc">Transforming reentry systems and reducing recidivism through policy, research, and community partnership.</p>
+        </li>
+        <li>
+          <div class="role">Assistant District Attorney, Restorative Justice Unit</div>
+          <span class="org">San Francisco District Attorney's Office</span>
+          <p class="desc">Expanded access to restorative justice diversion for youth and adults facing felony charges where survivors chose a restorative path.</p>
+        </li>
+        <li>
+          <div class="role">Civil Rights Attorney</div>
+          <span class="org">Equal Justice Society</span>
+          <p class="desc">Wrote two bills that were signed into law—AB 241 and AB 242—making implicit bias training a requirement for all judges, attorneys and healthcare professionals in California.</p>
+        </li>
+        <li>
+          <div class="role">Judicial Law Clerk</div>
+          <span class="org">Hon. Thelton Henderson, N.D. Cal.</span>
+          <p class="desc">Clerked for one of the most influential civil rights judges in American history.</p>
+        </li>
+        <li>
+          <div class="role">Civil Rights Fellow</div>
+          <span class="org">ACLU of Northern California</span>
+          <p class="desc">Co-led California Supreme Court litigation seeking resentencing for people serving juvenile life without parole.</p>
+        </li>
+        <li>
+          <div class="role">J.D., Berkeley Law</div>
+          <span class="org">University of California, Berkeley School of Law</span>
+          <p class="desc">Concentrated in international law, civil rights, criminal law, and restorative justice. Founded the Post-Conviction Advocacy Project, a student-led clinic that has trained over 130 students to represent lifers in parole hearings and led to over 60 people regaining their freedom after long periods of incarceration.</p>
+        </li>
+        <li>
+          <div class="role">B.A., University of Chicago</div>
+          <span class="org">University of Chicago</span>
+          <p class="desc">Graduated with distinction, with a major in international studies and a minor in human rights.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CURRENT POLITICAL ROLES -->
+<section class="current-roles">
+  <div class="container">
+    <div class="section-eyebrow">Movement leadership</div>
+    <h2 class="section-title">Political &amp; community <em>leadership</em>.</h2>
+    <div class="roles-grid">
+      <div class="role-card">
+        <div class="role">Chair</div>
+        <span class="org">Oakland Public Safety Planning &amp; Oversight Commission</span>
+        <p>Overseeing $47M in Measure NN public safety funds and co-developing the city's first four-year community violence reduction plan.</p>
+      </div>
+      <div class="role-card">
+        <div class="role">Appointed Delegate, AD18</div>
+        <span class="org">California Democratic Party</span>
+        <p>Driving progressive change within the state party. Representing Oakland, Alameda, and Emeryville at the state party.</p>
+      </div>
+      <div class="role-card">
+        <div class="role">Circle Keeper &amp; Facilitator</div>
+        <span class="org">Community</span>
+        <p>Facilitates restorative justice accountability processes in organizations and communities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HONORS & SKILLS -->
+<section class="recognition">
+  <div class="container">
+    <div class="recognition-grid">
+      <div>
+        <div class="section-eyebrow">Honors &amp; Awards</div>
+        <h2 class="section-title">Recognized for <em>the work</em>.</h2>
+        <ul class="awards-list">
+          <li><span class="yr">2016</span><span>Unsung Hero Award</span></li>
+          <li><span class="yr">2015</span><span>Rights and Leadership Award</span></li>
+          <li><span class="yr">2014</span><span>Certificate of Recognition for Commitment to Advancing Justice Through Public Interest Work</span></li>
+          <li><span class="yr">2013–14</span><span>Post-Conviction Advocate Award</span></li>
+          <li><span class="yr">2013</span><span>The Promise Award, Association for Dispute Resolution of Northern California</span></li>
+          <li><span class="yr">2013</span><span>American Jurisprudence Award, International Human Rights Clinic Seminar</span></li>
+          <li><span class="yr">2012</span><span>Paul &amp; Daisy Soros Fellowship for New Americans</span></li>
+          <li><span class="yr">2012</span><span>Prosser Award (second highest grade) in Constitutional Law</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="section-eyebrow">Skills</div>
+        <h2 class="section-title">What I <em>bring</em>.</h2>
+        <div class="skills-tags">
+          <span>Legal research &amp; writing</span>
+          <span>Restorative justice diversion</span>
+          <span>International law</span>
+          <span>Policy analysis</span>
+          <span>Legislative advocacy</span>
+          <span>Restorative justice circle keeping</span>
+          <span>Grassroots organizing</span>
+          <span>Political campaigning</span>
+          <span>Strategic development</span>
+          <span>Facilitation</span>
+          <span>Project management</span>
+          <span>Leadership development</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding: 100px 0; background: url('assets/texture.jpg') center/cover, var(--bg-warm); text-align: center;">
+  <div class="container">
+    <div class="narrow">
+      <h2 class="section-title">Let's <em>work together</em>.</h2>
+      <p style="font-family: 'Fraunces', serif; font-size: 22px; color: var(--ink-soft); font-style: italic; margin-bottom: 36px;">If any of this resonates — if you're seeking policy change, navigating conflict, building a campaign, or wondering if a restorative process is right for your situation — reach out.</p>
+      <a href="contact.html" class="btn">Get in touch <span class="btn-arrow">→</span></a>
+      <a href="offerings.html" class="btn btn-outline" style="margin-left: 12px;">See offerings</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a href="index.html" class="logo">
+        <span class="logo-mark"><img src="logo-mark-light.svg" alt="" /></span>
+        <span class="logo-name">Yoana Tchoukleva</span>
+      </a>
+      <p class="footer-blurb">Realizing a community-led vision for justice in Oakland and beyond.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="bio.html">Bio</a></li>
+        <li><a href="offerings.html">Offerings</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="contact.html">Get in touch</a></li>
+        <li><a href="mailto:Yoana.Tchoukleva@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/ioanatchoukleva/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.instagram.com/yoana.tch/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="copyright">© <span class="cr-year">2026</span> Yoana Tchoukleva · Oakland, CA · A community-led practice</div>
+</footer>
+
+<script>document.querySelectorAll('.cr-year').forEach(function(el){el.textContent=new Date().getFullYear();});</script>
+
+</body>
+</html>

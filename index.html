@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Yoana Tchoukleva — Realizing a community-led vision for justice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="logo-mark.svg">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* ===== HOMEPAGE HERO — Oakland sunset over Lake Merritt ===== */
+  .hero {
+    position: relative;
+    min-height: 86vh;
+    display: flex; align-items: flex-end;
+    overflow: hidden;
+    background: #1a1208;
+  }
+  .hero-video-wrap {
+    position: absolute; inset: 0;
+    overflow: hidden;
+    z-index: 0;
+    background: url('assets/home-hero-image.jpg') center/cover no-repeat;
+  }
+  .hero-video-wrap iframe {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 56.25vw;
+    min-height: 100%;
+    min-width: 177.78vh;
+    pointer-events: none;
+    border: none;
+    z-index: 1;
+  }
+  .hero-video-wrap::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+      linear-gradient(to top, rgba(20,12,4,0.7) 0%, rgba(20,12,4,0.2) 40%, transparent 65%),
+      linear-gradient(to right, rgba(20,12,4,0.45) 0%, transparent 55%);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 32px 80px;
+    max-width: 1180px; margin: 0 auto; width: 100%;
+    color: #fffaeb;
+  }
+
+  .hero-eyebrow {
+    font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--sun); margin-bottom: 22px; font-weight: 700;
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: ""; display: inline-block;
+    width: 28px; height: 1px; background: var(--sun);
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(44px, 5.6vw, 78px);
+    font-weight: 400;
+    margin-bottom: 28px;
+    color: #fffaeb;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    max-width: 920px;
+    text-shadow: 0 2px 30px rgba(0,0,0,0.4);
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: #ffd58a;
+    font-variation-settings: "SOFT" 100, "WONK" 1;
+  }
+  .hero-roles {
+    font-size: 14px;
+    color: #f4e6cf;
+    letter-spacing: 0.04em;
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+  .hero-roles span {
+    color: var(--sun);
+    margin: 0 8px;
+    font-weight: 600;
+    opacity: 0.7;
+  }
+  .hero-quote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: clamp(18px, 1.5vw, 21px);
+    line-height: 1.45;
+    color: #fffaeb;
+    border-left: 3px solid var(--sun);
+    padding-left: 20px;
+    margin-bottom: 36px;
+    max-width: 540px;
+    text-shadow: 0 1px 20px rgba(0,0,0,0.3);
+  }
+  .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+  .hero-cta .btn-outline {
+    color: #fffaeb;
+    border-color: #fffaeb;
+  }
+  .hero-cta .btn-outline:hover {
+    background: #fffaeb;
+    color: var(--ink);
+  }
+
+  /* ===== WHY ===== */
+  .why { background: var(--bg); position: relative; overflow: hidden; }
+  .why-grid {
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start;
+    position: relative; z-index: 1;
+  }
+  @media (max-width: 860px) {
+    .why-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+  .why-photo {
+    aspect-ratio: 4/3;
+    background: url('assets/function-of-freedom.jpg') center/cover no-repeat;
+    border-radius: 4px;
+    box-shadow: 0 30px 60px -20px rgba(35,5,0,0.25);
+    position: sticky; top: 100px;
+  }
+  .why p {
+    font-family: 'Fraunces', serif;
+    font-size: 22px; line-height: 1.55; color: var(--ink-soft);
+    margin-bottom: 20px;
+    font-weight: 350;
+  }
+  .why p:first-of-type {
+    font-size: 28px; color: var(--ink); font-weight: 400;
+  }
+
+  /* ===== BIO ===== */
+  .bio { background: url('assets/texture.jpg') center/cover, var(--bg-warm); }
+  .bio-grid {
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center;
+  }
+  @media (max-width: 860px) {
+    .bio-grid { grid-template-columns: 1fr; gap: 48px; }
+  }
+  .bio-portrait {
+    aspect-ratio: 4/5;
+    border-radius: 4px;
+    background: url('assets/yoana-facilitating-visioning.jpg') center/cover no-repeat;
+    box-shadow: 0 30px 60px -20px rgba(35,5,0,0.25);
+    position: relative;
+    overflow: hidden;
+  }
+  .bio-text p { margin-bottom: 18px; color: var(--ink-soft); font-size: 17px; }
+  .bio-text p strong { color: var(--ink); font-weight: 600; }
+  .identity-line {
+    margin: 0 0 24px;
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--green-deep);
+    border-left: 3px solid var(--sun);
+    padding-left: 18px;
+  }
+  .credentials {
+    display: flex; gap: 12px; flex-wrap: wrap;
+    margin: 24px 0;
+  }
+  .credentials .pill {
+    background: var(--bg-warm); color: var(--green-deep);
+    border: 1px solid var(--green); border-radius: 999px;
+    padding: 6px 14px; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.05em; text-transform: uppercase;
+  }
+  .bio-list { list-style: none; margin: 24px 0; padding: 0; }
+  .bio-list li {
+    padding: 12px 0 12px 32px;
+    border-bottom: 1px solid var(--line-soft);
+    position: relative;
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .bio-list li::before {
+    content: ""; position: absolute; left: 0; top: 18px;
+    width: 18px; height: 2px; background: var(--sun-deep);
+  }
+
+  /* ===== OFFERINGS — condensed homepage cards ===== */
+  .offerings { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-warm) 100%); }
+  .offerings-header { text-align: center; margin-bottom: 64px; }
+  .offerings-header p {
+    max-width: 700px; margin: 0 auto;
+    font-family: 'Fraunces', serif;
+    font-size: 22px; font-style: italic; color: var(--ink-soft);
+    line-height: 1.45;
+  }
+  .offerings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .offering {
+    background: #ffffff;
+    border: 1px solid var(--line-soft);
+    border-radius: 8px;
+    padding: 0 24px 32px;
+    overflow: hidden;
+    transition: transform .25s, box-shadow .25s, border-color .25s;
+    text-align: left;
+    cursor: pointer;
+    text-decoration: none !important;
+    display: flex; flex-direction: column;
+    color: var(--ink) !important;
+  }
+  .offering:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px -15px rgba(60,40,20,0.2);
+    border-color: var(--red);
+    color: var(--ink) !important;
+  }
+  .offering-icon {
+    width: calc(100% + 48px);
+    aspect-ratio: 1 / 1;
+    height: auto;
+    margin: 0 -24px 24px;
+    display: block;
+    object-fit: cover;
+  }
+
+  .offering h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .offering p {
+    font-size: 14px; color: var(--ink-soft); line-height: 1.55;
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+  .offering-cta {
+    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--red); font-weight: 700;
+    margin-top: auto;
+  }
+  .offering-cta::after { content: " →"; transition: transform .2s; display: inline-block; }
+  .offering:hover .offering-cta::after { transform: translateX(4px); }
+
+  /* ===== QUOTE BANNER (green→blue, "alive") ===== */
+  .quote-banner {
+    background: linear-gradient(135deg, var(--green-deep) 0%, #335f6a 50%, var(--bay-deep) 100%);
+    color: #fbf3df;
+    padding: 100px 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .quote-banner::before {
+    content: ""; position: absolute;
+    top: -100px; right: -100px; width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 196, 101, 0.25) 0%, transparent 65%);
+  }
+  .quote-banner::after {
+    content: ""; position: absolute;
+    bottom: -80px; left: -80px; width: 280px; height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(231, 74, 45, 0.25) 0%, transparent 65%);
+  }
+  .quote-banner p {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 3.6vw, 44px);
+    font-weight: 350;
+    font-style: italic;
+    line-height: 1.3;
+    max-width: 920px; margin: 0 auto;
+    position: relative; z-index: 1;
+  }
+  .quote-banner p em { color: var(--sun); font-style: italic; font-variation-settings: "SOFT" 100; }
+  .quote-banner .quote-attr {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sun);
+    margin-top: 32px;
+    font-weight: 500;
+  }
+
+  /* ===== CONTACT (homepage teaser) ===== */
+  .contact-teaser {
+    background: url('assets/texture.jpg') center/cover, var(--bg-warm);
+    text-align: center;
+  }
+  .path-portrait {
+    width: 220px;
+    height: 280px;
+    background: url('assets/yoana-portrait-skyline.jpg') center 20%/cover no-repeat;
+    border-radius: 110px 110px 0 0;
+    margin: 0 auto 36px;
+    box-shadow: 0 28px 44px -18px rgba(35,5,0,0.32);
+  }
+  .contact-teaser .narrow p {
+    font-family: 'Fraunces', serif;
+    font-size: 24px; color: var(--ink-soft);
+    margin-bottom: 36px;
+    font-style: italic;
+  }
+  .signup {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 40px;
+    margin-top: 48px;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+    text-align: center;
+  }
+  .signup h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 28px; margin-bottom: 12px;
+  }
+  .signup p {
+    font-size: 15px; color: var(--ink-soft);
+    margin-bottom: 24px !important;
+    font-style: normal !important;
+    font-family: 'Inter', sans-serif !important;
+  }
+  .signup-form {
+    display: flex; gap: 8px; max-width: 440px; margin: 0 auto;
+    flex-wrap: wrap;
+  }
+  .signup-form input {
+    flex: 1; min-width: 200px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 14px 20px;
+    font-family: 'Inter', sans-serif; font-size: 14px;
+    color: var(--ink);
+  }
+  .signup-form input:focus { outline: none; border-color: var(--sun-deep); }
+
+  /* ===== CREDENTIALS STRIP ===== */
+  .credentials-strip {
+    background: var(--ink);
+    border-bottom: 2px solid var(--sun);
+    overflow: hidden;
+  }
+  .credentials-strip-inner {
+    display: flex;
+    align-items: stretch;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .credentials-strip-inner::-webkit-scrollbar { display: none; }
+  .cs-label {
+    font-size: 9px; letter-spacing: 0.26em; text-transform: uppercase;
+    color: #fbf3df; font-weight: 700;
+    padding: 14px 20px 14px 0;
+    margin-right: 20px;
+    border-right: 1px solid rgba(255,255,255,0.15);
+    flex-shrink: 0;
+    display: flex; align-items: center;
+    white-space: nowrap;
+  }
+  .credentials-strip-inner > span:not(.cs-label) {
+    font-size: 12px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: #c8b389;
+    padding: 14px 20px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: flex; align-items: center;
+  }
+  .credentials-strip-inner > span:not(.cs-label):last-child { border-right: none; }
+</style>
+</head>
+<body>
+
+<!-- =================== NAV =================== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo logo-full">
+      <span class="logo-mark"><img src="logo-mark.svg" alt="" /></span>
+      <span class="logo-name"><span>Yoana</span><span>Tchoukleva</span></span>
+    </a>
+    <ul class="nav-tabs">
+      <li><a href="bio.html">Bio</a></li>
+      <li><a href="offerings.html">Offerings</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- =================== HERO =================== -->
+<header class="hero">
+  <div class="hero-video-wrap" aria-hidden="true"></div>
+  <div class="hero-content">
+    <h1>Realizing a <em>community-led vision</em> for justice.</h1>
+    <div class="hero-cta">
+      <a href="offerings.html" class="btn">Explore offerings <span class="btn-arrow">→</span></a>
+      <a href="bio.html" class="btn btn-outline">About Yoana</a>
+    </div>
+  </div>
+</header>
+
+<!-- CREDENTIALS STRIP -->
+<div class="credentials-strip">
+  <div class="credentials-strip-inner">
+    <span class="cs-label">Credentials &amp; Roles</span>
+    <span>Attorney</span>
+    <span>Lecturer at Berkeley Law</span>
+    <span>Restorative Justice Circle Keeper</span>
+    <span>Policy Analyst</span>
+    <span>Legislative Strategist</span>
+    <span>Community Organizer</span>
+    <span>Change Maker</span>
+    <span>Bridge Builder</span>
+    <span>Mother</span>
+    <span>J.D., Berkeley Law</span>
+    <span>California Bar</span>
+    <span>Chair, Oakland Public Safety Commission (OPSPOC)</span>
+    <span>CA Democratic Party Delegate</span>
+    <span>Bay Area Vice Chair · CA Dem Progressive Caucus</span>
+    <span>Co-Chair · CA Democrats for Justice in Palestine</span>
+  </div>
+</div>
+
+<!-- =================== WHY THIS WORK =================== -->
+<section class="why" id="why">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-photo" aria-hidden="true"></div>
+      <div>
+        <div class="section-eyebrow">Why this work</div>
+        <h2 class="section-title">A new way of <em>being</em>.</h2>
+        <p>So many of us are hurting. Our Earth is hurting. Whether it's the homelessness on our streets, the genocide in Gaza, or the destruction of our planet, we know what's happening is wrong. We know we have inherited systems that cause harm.</p>
+        <p>It is time for a new way of being — a new way that reconnects us with ourselves, with our Earth, and ultimately with each other.</p>
+        <p>Only from this place of connection can we create the policies, structures and even laws that move us toward true safety, healing, and a community-led vision for justice.</p>
+        <p>I offer practices for connection and transformation — at the personal, interpersonal, and systemic levels — that take us one step closer to a future where all of us can be well.</p>
+        <a href="offerings.html" class="btn">Explore my offerings <span class="btn-arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== BIO (SHORT) =================== -->
+<section class="bio" id="bio">
+  <div class="container">
+    <div class="bio-grid">
+      <div class="bio-portrait" aria-label="Photo of Yoana Tchoukleva facilitating"></div>
+      <div class="bio-text">
+        <div class="section-eyebrow">About Yoana</div>
+        <h2 class="section-title">Twelve years <em>in service</em>.</h2>
+        <p><strong>Yoana Tchoukleva</strong> (formally "Ioana") is an attorney, restorative justice circle keeper, and policy analyst dedicated to realizing a community-led vision for justice in the Bay Area and beyond.</p>
+        <p>Over twelve years as a civil rights attorney, public safety commissioner, and community leader, Yoana has:</p>
+        <ul class="bio-list">
+          <li>Expanded access to restorative justice diversion at the SF DA's Office for adults facing felony charges</li>
+          <li>Co-authored CA legislation requiring implicit bias training for judges, attorneys, and healthcare professionals</li>
+          <li>Co-led ACLU litigation seeking resentencing for people serving juvenile life without parole</li>
+          <li>Developed a four-year violence reduction plan for Oakland and oversight strategy for $47M in Measure NN funds</li>
+          <li>Drafted a plan to transform the reentry ecosystem in San Francisco</li>
+          <li>Held restorative justice circles in prisons, juvenile camps, and community settings</li>
+        </ul>
+        <a href="bio.html" class="btn btn-outline">Read full bio <span class="btn-arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== OFFERINGS (CONDENSED) =================== -->
+<section class="offerings" id="offerings">
+  <div class="container">
+    <div class="offerings-header">
+      <div class="section-eyebrow">Offerings</div>
+      <h2 class="section-title">Five practices for <em>connection &amp; transformation.</em></h2>
+      <p>I partner with individuals, organizations, and campaigns to change policy, transform conflict, and sustain movement leaders.</p>
+    </div>
+
+    <div class="offerings-grid">
+
+      <a class="offering" href="offerings.html#conflict">
+        <img class="offering-icon" src="assets/icons/01-conflict-resolution.png" alt="" />
+        <h3>Conflict Resolution</h3>
+        <p>Move through conflict in a way that deepens relationships rather than ends them.</p>
+        <span class="offering-cta">Learn more</span>
+      </a>
+
+      <a class="offering" href="offerings.html#rj">
+        <img class="offering-icon" src="assets/icons/02-restorative-justice.png" alt="" />
+        <h3>Restorative &amp; Transformative Justice</h3>
+        <p>Find repair and healing after incidents of harm and crime.</p>
+        <span class="offering-cta">Learn more</span>
+      </a>
+
+      <a class="offering" href="offerings.html#policy">
+        <img class="offering-icon" src="assets/icons/04-political-campaigning.png" alt="" />
+        <h3>Policy &amp; Legislative Advocacy</h3>
+        <p>Change laws and policies to catalyze systemic change.</p>
+        <span class="offering-cta">Learn more</span>
+      </a>
+
+      <a class="offering" href="offerings.html#campaigns">
+        <img class="offering-icon" src="assets/icons/03-policy-advocacy.png" alt="" />
+        <h3>Political Campaigning</h3>
+        <p>Win elections in a way that returns power to the people.</p>
+        <span class="offering-cta">Learn more</span>
+      </a>
+
+      <a class="offering" href="offerings.html#ritual">
+        <img class="offering-icon" src="assets/icons/05-return-to-ritual.png" alt="" />
+        <h3>Return to Ritual</h3>
+        <p>Develop practices for rest and reconnection, not burnout.</p>
+        <span class="offering-cta">Learn more</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- =================== QUOTE BANNER =================== -->
+<section class="quote-banner">
+  <p>"None of us can see the path forward alone. <em>We need to learn to see together.</em>"</p>
+</section>
+
+<!-- =================== CONTACT TEASER + NEWSLETTER =================== -->
+<section class="contact-teaser" id="contact">
+  <div class="container">
+    <div class="narrow">
+      <div class="path-portrait" aria-hidden="true"></div>
+      <div class="section-eyebrow">Stay in touch</div>
+      <h2 class="section-title">Walk this <em>path with me</em>.</h2>
+      <p>Whether you're navigating a conflict, building a campaign, or wondering if a restorative process is right for your situation — reach out.</p>
+      <a href="contact.html" class="btn">Get in touch <span class="btn-arrow">→</span></a>
+
+    </div>
+  </div>
+</section>
+
+<!-- =================== FOOTER =================== -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a href="index.html" class="logo">
+        <span class="logo-mark"><img src="logo-mark-light.svg" alt="" /></span>
+        <span class="logo-name">Yoana Tchoukleva</span>
+      </a>
+      <p class="footer-blurb">Realizing a community-led vision for justice in Oakland and beyond.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="bio.html">Bio</a></li>
+        <li><a href="offerings.html">Offerings</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="contact.html">Get in touch</a></li>
+        <li><a href="mailto:Yoana.Tchoukleva@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/ioanatchoukleva/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.instagram.com/yoana.tch/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="copyright">
+    © <span class="cr-year">2026</span> Yoana Tchoukleva · Oakland, CA · A community-led practice
+  </div>
+</footer>
+
+<script>document.querySelectorAll('.cr-year').forEach(function(el){el.textContent=new Date().getFullYear();});</script>
+
+</body>
+</html>

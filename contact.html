@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact — Yoana Tchoukleva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="logo-mark.svg">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 80px;
+    padding: 80px 0;
+  }
+  @media (max-width: 860px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  }
+
+  .contact-form {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 48px;
+  }
+  @media (max-width: 720px) {
+    .contact-form { padding: 28px; }
+  }
+  .contact-form h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+  .contact-form .form-intro {
+    color: var(--ink-soft);
+    font-size: 15px;
+    margin-bottom: 28px;
+  }
+
+  .form-row { margin-bottom: 18px; }
+  .form-row label {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .form-row input,
+  .form-row textarea,
+  .form-row select {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 14px 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: var(--ink);
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .form-row input:focus,
+  .form-row textarea:focus,
+  .form-row select:focus {
+    outline: none;
+    border-color: var(--red);
+    box-shadow: 0 0 0 3px rgba(231, 74, 45, 0.12);
+  }
+  .form-row textarea { min-height: 160px; resize: vertical; }
+
+  .form-status {
+    display: none;
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 12px 16px;
+    border-radius: 8px;
+  }
+  .form-status.show { display: block; }
+  .form-status.success {
+    background: #eef5ee; color: var(--green-deep);
+    border: 1px solid var(--green);
+  }
+  .form-status.error {
+    background: #fbeeea; color: var(--red-deep);
+    border: 1px solid var(--red);
+  }
+
+  .form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  @media (max-width: 480px) {
+    .form-grid-2 { grid-template-columns: 1fr; }
+  }
+
+  /* Sidebar */
+  .contact-portrait {
+    width: 168px;
+    height: 168px;
+    border-radius: 50%;
+    background: url('assets/yoana-portrait-brick-wall.jpg') center/cover no-repeat;
+    margin: 0 0 28px;
+    box-shadow: 0 18px 32px -12px rgba(35,5,0,0.28);
+    border: 4px solid #ffffff;
+  }
+  .contact-side h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+  .contact-side h3 em { font-style: italic; color: var(--red); font-variation-settings: "SOFT" 100; }
+
+  .contact-method {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .contact-method:first-of-type { border-top: 2px solid var(--sun); padding-top: 28px; }
+  .contact-method:last-of-type { border-bottom: none; }
+  .contact-method-label {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--green-deep); font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .contact-method a {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .contact-method a:hover { color: var(--red); }
+  .contact-method p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+  }
+
+  /* Newsletter */
+  .newsletter {
+    background: linear-gradient(135deg, var(--green-deep) 0%, #335f6a 50%, var(--bay-deep) 100%);
+    color: #fbf3df;
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .newsletter::before {
+    content: ""; position: absolute;
+    top: -100px; right: -100px; width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 196, 101, 0.25) 0%, transparent 65%);
+  }
+  .newsletter::after {
+    content: ""; position: absolute;
+    bottom: -80px; left: -80px; width: 280px; height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(231, 74, 45, 0.2) 0%, transparent 65%);
+  }
+  .newsletter .narrow { position: relative; z-index: 1; text-align: center; }
+  .newsletter h2 { color: #fbf3df; }
+  .newsletter h2 em { color: var(--sun); }
+  .newsletter .section-eyebrow { color: var(--sun); }
+  .newsletter p {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: #d4c19f;
+    margin-bottom: 36px;
+    line-height: 1.45;
+  }
+  .signup-form {
+    display: flex; gap: 8px; max-width: 480px; margin: 0 auto;
+    flex-wrap: wrap;
+  }
+  .signup-form input {
+    flex: 1; min-width: 220px;
+    background: rgba(255,255,255,0.95);
+    border: 1px solid transparent;
+    border-radius: 999px;
+    padding: 14px 20px;
+    font-family: 'Inter', sans-serif; font-size: 14px;
+    color: var(--ink);
+  }
+  .signup-form input:focus { outline: none; border-color: var(--sun); }
+
+  /* FAQ */
+  .faq { padding: 100px 0; background: url('assets/texture.jpg') center/cover, var(--bg-warm); }
+  .faq-list {
+    max-width: 760px;
+    margin: 48px auto 0;
+  }
+  details.faq-item {
+    border-bottom: 1px solid var(--line);
+    padding: 24px 0;
+  }
+  details.faq-item summary {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    cursor: pointer;
+    list-style: none;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 16px;
+  }
+  details.faq-item summary::-webkit-details-marker { display: none; }
+  details.faq-item summary::after {
+    content: "+";
+    font-size: 28px;
+    color: var(--red);
+    transition: transform .2s;
+    line-height: 1;
+  }
+  details.faq-item[open] summary::after { transform: rotate(45deg); }
+  details.faq-item p {
+    margin-top: 16px;
+    font-size: 16px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo logo-full">
+      <span class="logo-mark"><img src="logo-mark.svg" alt="" /></span>
+      <span class="logo-name"><span>Yoana</span><span>Tchoukleva</span></span>
+    </a>
+    <ul class="nav-tabs">
+      <li><a href="bio.html">Bio</a></li>
+      <li><a href="offerings.html">Offerings</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="container">
+    <div class="section-eyebrow">Contact</div>
+    <h1>Let's <em>connect</em>.</h1>
+    <p class="lede">Whether you're navigating a conflict, building a campaign, or wondering if a restorative process is right for your situation — I'd love to hear from you.</p>
+  </div>
+</header>
+
+<!-- CONTACT FORM + INFO -->
+<section style="background: var(--bg);">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- FORM -->
+      <form class="contact-form" id="contact-form">
+        <h2>Send a message</h2>
+        <p class="form-intro">Tell me a bit about what's bringing you here. I read every message and respond within a week.</p>
+
+        <input type="hidden" name="_subject" value="New message from yoanatchoukleva.com" />
+
+        <div class="form-grid-2">
+          <div class="form-row">
+            <label for="firstName">First name</label>
+            <input id="firstName" name="first_name" type="text" required />
+          </div>
+          <div class="form-row">
+            <label for="lastName">Last name</label>
+            <input id="lastName" name="last_name" type="text" required />
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+          </div>
+          <div class="form-row">
+            <label for="org">Organization (optional)</label>
+            <input id="org" name="organization" type="text" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="topic">What kind of support are you looking for?</label>
+          <select id="topic" name="topic">
+            <option value="">Select an offering...</option>
+            <option>Conflict Resolution</option>
+            <option>Restorative or Transformative Justice</option>
+            <option>Policy &amp; Legislative Advocacy</option>
+            <option>Political Campaigning</option>
+            <option>Return to Ritual</option>
+            <option>Press / Speaking</option>
+            <option>Something else</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="message">Tell me more</label>
+          <textarea id="message" name="message" placeholder="What's the situation you're navigating? What does support look like for you?" required></textarea>
+        </div>
+
+        <button class="btn" type="submit" style="width: 100%; justify-content: center;">Send message <span class="btn-arrow">→</span></button>
+        <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+      </form>
+
+      <!-- SIDE INFO -->
+      <aside class="contact-side">
+        <div class="contact-portrait" aria-label="Portrait of Yoana"></div>
+        <h3>Other ways <em>to reach me</em></h3>
+
+        <div class="contact-method">
+          <div class="contact-method-label">Email</div>
+          <a href="mailto:Yoana.Tchoukleva@gmail.com">Yoana.Tchoukleva@gmail.com</a>
+          <p>Best for inquiries about offerings, speaking, and press.</p>
+        </div>
+
+        <div class="contact-method">
+          <div class="contact-method-label">LinkedIn</div>
+          <a href="https://www.linkedin.com/in/ioanatchoukleva/" target="_blank" rel="noopener">linkedin.com/in/ioanatchoukleva</a>
+          <p>For professional connections and longer-form posts.</p>
+        </div>
+
+        <div class="contact-method">
+          <div class="contact-method-label">Instagram</div>
+          <a href="https://www.instagram.com/yoana.tch/" target="_blank" rel="noopener">@yoana.tch</a>
+          <p>Updates, reflections, and behind-the-scenes.</p>
+        </div>
+
+        <div class="contact-method">
+          <div class="contact-method-label">Based in</div>
+          <a href="#" style="cursor: default;">Oakland, CA</a>
+          <p>Practicing across the Bay Area, statewide, and remotely.</p>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="narrow" style="text-align: center; margin-bottom: 0;">
+      <div class="section-eyebrow">Common questions</div>
+      <h2 class="section-title">Before you <em>reach out</em>.</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>How long does it take to hear back?</summary>
+        <p>I read every message and respond within a week. For urgent matters, please note that in your subject line and I'll do my best to respond sooner.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do you take pro bono cases?</summary>
+        <p>I take on a small number of pro bono and sliding-scale engagements each year, especially for survivors of harm and grassroots organizations. Let me know your situation and we'll talk.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Are you available for speaking engagements?</summary>
+        <p>Yes — keynotes, panels, trainings, and university lectures. Reach out via the press email above with details on the event, audience, and timing.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can you facilitate a process for my organization?</summary>
+        <p>Often, yes. Restorative justice and conflict resolution processes require all parties to be willing to engage. We'll have an initial conversation to assess fit and design the right process for you.</p>
+      </details>
+      <details class="faq-item">
+        <summary>I'm not sure which offering fits — can I still reach out?</summary>
+        <p>Absolutely. Many situations don't fit neatly into one category. Send a message describing what you're navigating and we'll figure out the right path together.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a href="index.html" class="logo">
+        <span class="logo-mark"><img src="logo-mark-light.svg" alt="" /></span>
+        <span class="logo-name">Yoana Tchoukleva</span>
+      </a>
+      <p class="footer-blurb">Realizing a community-led vision for justice in Oakland and beyond.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="bio.html">Bio</a></li>
+        <li><a href="offerings.html">Offerings</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="contact.html">Get in touch</a></li>
+        <li><a href="mailto:Yoana.Tchoukleva@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/ioanatchoukleva/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.instagram.com/yoana.tch/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="copyright">© <span class="cr-year">2026</span> Yoana Tchoukleva · Oakland, CA · A community-led practice</div>
+</footer>
+
+<script>
+  // Pre-fill topic from query string (e.g., ?subject=Conflict%20Resolution)
+  const params = new URLSearchParams(window.location.search);
+  const subject = params.get('subject');
+  if (subject) {
+    const select = document.getElementById('topic');
+    if (select) {
+      for (const option of select.options) {
+        if (option.text.toLowerCase().includes(subject.toLowerCase().split(' ')[0])) {
+          option.selected = true;
+          break;
+        }
+      }
+    }
+  }
+
+  // ───────────────────────────────────────────────────────────
+  // CONTACT FORM (Formspree)
+  // SETUP: create a free form at https://formspree.io (set the
+  // notification email to Yoana.Tchoukleva@gmail.com), then paste
+  // its endpoint below in place of YOUR_FORM_ID.
+  // ───────────────────────────────────────────────────────────
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+
+  const contactForm = document.getElementById('contact-form');
+  const formStatus = document.getElementById('form-status');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Not connected yet — fail gracefully instead of looking broken.
+      if (FORMSPREE_ENDPOINT.indexOf('YOUR_FORM_ID') !== -1) {
+        formStatus.textContent = "The form isn't connected yet — please email Yoana.Tchoukleva@gmail.com directly for now.";
+        formStatus.className = 'form-status show error';
+        return;
+      }
+
+      const btn = contactForm.querySelector('button[type=submit]');
+      const originalLabel = btn.innerHTML;
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      formStatus.className = 'form-status';
+
+      fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (res) {
+        if (res.ok) {
+          contactForm.reset();
+          formStatus.textContent = "Thank you — your message is on its way. I'll be in touch soon.";
+          formStatus.className = 'form-status show success';
+        } else {
+          formStatus.textContent = "Something went wrong. Please email Yoana.Tchoukleva@gmail.com directly.";
+          formStatus.className = 'form-status show error';
+        }
+      }).catch(function () {
+        formStatus.textContent = "Something went wrong. Please email Yoana.Tchoukleva@gmail.com directly.";
+        formStatus.className = 'form-status show error';
+      }).finally(function () {
+        btn.disabled = false;
+        btn.innerHTML = originalLabel;
+      });
+    });
+  }
+</script>
+
+<script>document.querySelectorAll('.cr-year').forEach(function(el){el.textContent=new Date().getFullYear();});</script>
+
+</body>
+</html>

@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Style Guide — Yoana Tchoukleva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="logo-mark.svg">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* ===== STYLE GUIDE LAYOUT ===== */
+  .sg-section {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .sg-section.alt { background: url('assets/texture.jpg') center/cover, var(--bg-warm); }
+  .sg-label {
+    font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--ink-mute); font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .sg-section h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .sg-section h2 em { font-style: italic; color: var(--red); font-variation-settings: "SOFT" 100; }
+  .sg-intro {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    color: var(--ink-soft);
+    font-style: italic;
+    max-width: 700px;
+    margin-bottom: 48px;
+  }
+
+  /* ===== LOGO ===== */
+  .logo-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 720px) { .logo-row { grid-template-columns: 1fr; } }
+  .logo-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 48px;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 200px;
+    position: relative;
+  }
+  .logo-card.dark { background: var(--ink); }
+  .logo-card.cream { background: url('assets/texture.jpg') center/cover, var(--bg-warm); }
+  .logo-card .label {
+    position: absolute; bottom: 12px; left: 16px;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-mute); font-weight: 700;
+  }
+  .logo-card.dark .label { color: var(--gold); }
+  .logo-card img { max-width: 100%; max-height: 100px; }
+
+  /* ===== COLOR PALETTE ===== */
+  .palette {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+  }
+  .swatch {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: #fff;
+  }
+  .swatch-color {
+    height: 140px;
+  }
+  .swatch-info {
+    padding: 14px 16px;
+    background: #fff;
+  }
+  .swatch-name {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .swatch-hex {
+    font-family: 'Inter', monospace;
+    font-size: 12px;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ===== FONT PAIRINGS ===== */
+  .font-option {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 48px;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .font-option .vote {
+    position: absolute;
+    top: 24px; right: 24px;
+    background: var(--red);
+    color: var(--bg);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 999px;
+  }
+  .font-option .vote.ours { background: var(--sun-deep); color: var(--ink); }
+  .font-meta {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 700;
+    margin-bottom: 12px;
+    font-family: 'Inter', sans-serif;
+  }
+  .font-pair-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--red);
+    font-weight: 600;
+    margin-bottom: 32px;
+    letter-spacing: 0.04em;
+  }
+  .sample-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .sample-h1 {
+    font-size: clamp(38px, 4.4vw, 56px);
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 14px;
+    font-weight: 400;
+  }
+  .sample-h1 em { font-style: italic; color: var(--red); }
+  .sample-h2 {
+    font-size: 28px;
+    line-height: 1.2;
+    color: var(--ink);
+    margin: 24px 0 8px;
+    font-weight: 500;
+  }
+  .sample-body {
+    font-size: 17px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    margin-bottom: 12px;
+    max-width: 640px;
+  }
+  .sample-body em { font-style: italic; color: var(--ink); }
+  .sample-quote {
+    font-style: italic;
+    font-size: 22px;
+    color: var(--ink-soft);
+    border-left: 3px solid var(--sun);
+    padding-left: 18px;
+    margin: 16px 0;
+    line-height: 1.4;
+    max-width: 600px;
+  }
+
+  /* font option-specific overrides */
+  .opt-eb-garamond .sample-h1, .opt-eb-garamond .sample-h2, .opt-eb-garamond .sample-quote { font-family: 'EB Garamond', serif; }
+  .opt-eb-garamond .sample-body, .opt-eb-garamond .sample-eyebrow { font-family: 'Inter', sans-serif; }
+
+  .opt-cormorant .sample-h1, .opt-cormorant .sample-h2, .opt-cormorant .sample-quote { font-family: 'Cormorant Garamond', serif; }
+  .opt-cormorant .sample-body, .opt-cormorant .sample-eyebrow { font-family: 'Inter', sans-serif; }
+
+  .opt-fraunces .sample-h1, .opt-fraunces .sample-h2, .opt-fraunces .sample-quote { font-family: 'Fraunces', serif; }
+  .opt-fraunces .sample-h1 em, .opt-fraunces .sample-quote { font-variation-settings: "SOFT" 100; }
+  .opt-fraunces .sample-body, .opt-fraunces .sample-eyebrow { font-family: 'Inter', sans-serif; }
+
+  .opt-playfair .sample-h1, .opt-playfair .sample-h2, .opt-playfair .sample-quote { font-family: 'Playfair Display', serif; }
+  .opt-playfair .sample-body, .opt-playfair .sample-eyebrow { font-family: 'Manrope', sans-serif; }
+
+  .opt-lora .sample-h1, .opt-lora .sample-h2, .opt-lora .sample-quote { font-family: 'Lora', serif; }
+  .opt-lora .sample-body, .opt-lora .sample-eyebrow { font-family: 'DM Sans', sans-serif; }
+
+  /* ===== TYPE SCALE ===== */
+  .type-scale {
+    display: grid;
+    gap: 24px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 40px;
+  }
+  .type-scale-row {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 32px;
+    align-items: baseline;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .type-scale-row:last-child { border-bottom: none; }
+  .type-scale-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 600;
+  }
+  .type-scale-sample {
+    font-family: 'Fraunces', serif;
+    color: var(--ink);
+    line-height: 1.1;
+  }
+
+  /* ===== COMPONENTS ===== */
+  .components-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .component-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 32px;
+  }
+  .component-card h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+  .component-card .stack { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+
+  .pill-demo {
+    background: url('assets/texture.jpg') center/cover, var(--bg-warm);
+    color: var(--green-deep);
+    border: 1px solid var(--green);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+    display: inline-block;
+  }
+
+  /* ===== ICONOGRAPHY ===== */
+  .icon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+  }
+  .icon-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+  }
+  .icon-card svg {
+    width: 48px; height: 48px;
+    margin-bottom: 12px;
+  }
+  .icon-card .label {
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.06em;
+    font-family: 'Inter', sans-serif;
+  }
+  .icon-card.c-red svg { color: var(--red); }
+  .icon-card.c-orange svg { color: var(--sun-deep); }
+  .icon-card.c-amber svg { color: var(--ink); }
+  .icon-card.c-bay svg { color: var(--bay); }
+  .icon-card.c-deep svg { color: var(--red-deep); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo logo-full">
+      <span class="logo-mark"><img src="logo-mark.svg" alt="" /></span>
+      <span class="logo-name"><span>Yoana</span><span>Tchoukleva</span></span>
+    </a>
+    <ul class="nav-tabs">
+      <li><a href="bio.html">Bio</a></li>
+      <li><a href="offerings.html">Offerings</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="container">
+    <div class="section-eyebrow">Style Guide</div>
+    <h1>Brand &amp; <em>visual system</em>.</h1>
+    <p class="lede">Logo usage, color palette, typography options, and core components — pulled directly from Yoana's logo.</p>
+  </div>
+</header>
+
+<!-- ============ LOGO ============ -->
+<section class="sg-section">
+  <div class="container">
+    <div class="sg-label">01 — Logo</div>
+    <h2>The <em>mark</em>.</h2>
+    <p class="sg-intro">Yoana's logo combines a layered geometric mark — concentric squares radiating warm color — with a Garamond wordmark.</p>
+
+    <div class="logo-row">
+      <div class="logo-card">
+        <img src="logo.svg" alt="Yoana logo full" />
+        <span class="label">Full lockup · light</span>
+      </div>
+      <div class="logo-card cream">
+        <img src="logo-mark.svg" alt="Yoana mark" style="width: 120px; height: 120px;" />
+        <span class="label">Mark only</span>
+      </div>
+      <div class="logo-card dark">
+        <img src="logo-mark.svg" alt="Yoana mark on dark" style="width: 120px; height: 120px;" />
+        <span class="label">Mark · dark</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COLOR PALETTE ============ -->
+<section class="sg-section alt">
+  <div class="container">
+    <div class="sg-label">02 — Color</div>
+    <h2>Pulled from the <em>logo</em>.</h2>
+    <p class="sg-intro">Six colors directly sampled from the logo SVG. Cream is the page surface; deep brown is ink; vermillion is the primary action color; the warm gradient (gold → amber → orange) carries supporting accents.</p>
+
+    <div class="palette">
+      <div class="swatch">
+        <div class="swatch-color" style="background: #fff6cf;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Cream</div>
+          <div class="swatch-hex">#fff6cf</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #ffde8c;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Pale Gold</div>
+          <div class="swatch-hex">#ffde8c</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #ffc465;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Amber</div>
+          <div class="swatch-hex">#ffc465</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #ff8e3f;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Orange</div>
+          <div class="swatch-hex">#ff8e3f</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #e74a2d;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Vermillion</div>
+          <div class="swatch-hex">#e74a2d · primary</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #230500;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Deep Brown</div>
+          <div class="swatch-hex">#230500 · ink</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TYPOGRAPHY OPTIONS ============ -->
+<section class="sg-section">
+  <div class="container">
+    <div class="sg-label">03 — Typography</div>
+    <h2>Five font <em>options</em>.</h2>
+    <p class="sg-intro">The logo wordmark is set in <strong>Garamond Premier Pro</strong>. Below are five typeface pairings — the first stays close to the logo's family, the others offer alternative directions. Each pairs a serif headline with a complementary sans-serif body.</p>
+
+    <!-- Option 1: EB Garamond -->
+    <div class="font-option opt-eb-garamond">
+      <div class="vote">Closest to logo</div>
+      <div class="font-meta">Option 01</div>
+      <div class="font-pair-name">EB Garamond + Inter</div>
+      <div class="sample-eyebrow">Why this work</div>
+      <h1 class="sample-h1">Realizing a <em>community-led vision</em> for justice.</h1>
+      <h2 class="sample-h2">A new way of being.</h2>
+      <p class="sample-body">So many of us are hurting. Our Earth is hurting. <em>It is time for a new way of being</em> — a new way that reconnects us with ourselves, with our Earth, and ultimately with each other.</p>
+      <p class="sample-quote">"None of us can see the path forward alone — we need to learn to see together."</p>
+    </div>
+
+    <!-- Option 2: Cormorant Garamond -->
+    <div class="font-option opt-cormorant">
+      <div class="font-meta">Option 02</div>
+      <div class="font-pair-name">Cormorant Garamond + Inter</div>
+      <div class="sample-eyebrow">Why this work</div>
+      <h1 class="sample-h1">Realizing a <em>community-led vision</em> for justice.</h1>
+      <h2 class="sample-h2">A new way of being.</h2>
+      <p class="sample-body">So many of us are hurting. Our Earth is hurting. <em>It is time for a new way of being</em> — a new way that reconnects us with ourselves, with our Earth, and ultimately with each other.</p>
+      <p class="sample-quote">"None of us can see the path forward alone — we need to learn to see together."</p>
+    </div>
+
+    <!-- Option 3: Fraunces (current) -->
+    <div class="font-option opt-fraunces">
+      <div class="vote ours">Current direction</div>
+      <div class="font-meta">Option 03</div>
+      <div class="font-pair-name">Fraunces + Inter</div>
+      <div class="sample-eyebrow">Why this work</div>
+      <h1 class="sample-h1">Realizing a <em>community-led vision</em> for justice.</h1>
+      <h2 class="sample-h2">A new way of being.</h2>
+      <p class="sample-body">So many of us are hurting. Our Earth is hurting. <em>It is time for a new way of being</em> — a new way that reconnects us with ourselves, with our Earth, and ultimately with each other.</p>
+      <p class="sample-quote">"None of us can see the path forward alone — we need to learn to see together."</p>
+    </div>
+
+    <!-- Option 4: Playfair Display -->
+    <div class="font-option opt-playfair">
+      <div class="font-meta">Option 04</div>
+      <div class="font-pair-name">Playfair Display + Manrope</div>
+      <div class="sample-eyebrow">Why this work</div>
+      <h1 class="sample-h1">Realizing a <em>community-led vision</em> for justice.</h1>
+      <h2 class="sample-h2">A new way of being.</h2>
+      <p class="sample-body">So many of us are hurting. Our Earth is hurting. <em>It is time for a new way of being</em> — a new way that reconnects us with ourselves, with our Earth, and ultimately with each other.</p>
+      <p class="sample-quote">"None of us can see the path forward alone — we need to learn to see together."</p>
+    </div>
+
+    <!-- Option 5: Lora -->
+    <div class="font-option opt-lora">
+      <div class="font-meta">Option 05</div>
+      <div class="font-pair-name">Lora + DM Sans</div>
+      <div class="sample-eyebrow">Why this work</div>
+      <h1 class="sample-h1">Realizing a <em>community-led vision</em> for justice.</h1>
+      <h2 class="sample-h2">A new way of being.</h2>
+      <p class="sample-body">So many of us are hurting. Our Earth is hurting. <em>It is time for a new way of being</em> — a new way that reconnects us with ourselves, with our Earth, and ultimately with each other.</p>
+      <p class="sample-quote">"None of us can see the path forward alone — we need to learn to see together."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TYPE SCALE ============ -->
+<section class="sg-section alt">
+  <div class="container">
+    <div class="sg-label">04 — Type scale</div>
+    <h2>Sizes &amp; <em>hierarchy</em>.</h2>
+    <p class="sg-intro">Default scale based on the current direction (Fraunces + Inter). Headlines lead with weight 400 italic for emphasis.</p>
+
+    <div class="type-scale">
+      <div class="type-scale-row">
+        <div class="type-scale-label">Display</div>
+        <div class="type-scale-sample" style="font-size: 72px;">Practicing collective healing</div>
+      </div>
+      <div class="type-scale-row">
+        <div class="type-scale-label">H1</div>
+        <div class="type-scale-sample" style="font-size: 56px;">A new way of being</div>
+      </div>
+      <div class="type-scale-row">
+        <div class="type-scale-label">H2</div>
+        <div class="type-scale-sample" style="font-size: 40px;">A community-led vision</div>
+      </div>
+      <div class="type-scale-row">
+        <div class="type-scale-label">H3</div>
+        <div class="type-scale-sample" style="font-size: 28px;">Restorative justice</div>
+      </div>
+      <div class="type-scale-row">
+        <div class="type-scale-label">Lede</div>
+        <div class="type-scale-sample" style="font-size: 22px; font-style: italic; color: var(--ink-soft);">Attorney · Restorative Justice Circle Keeper · Policy Analyst</div>
+      </div>
+      <div class="type-scale-row">
+        <div class="type-scale-label">Body</div>
+        <div class="type-scale-sample" style="font-family: 'Inter', sans-serif; font-size: 17px; color: var(--ink-soft); line-height: 1.7;">Default body text. So many of us are hurting. Our Earth is hurting. It is time for a new way of being — a new way that reconnects us with ourselves, with our Earth, and ultimately with each other.</div>
+      </div>
+      <div class="type-scale-row">
+        <div class="type-scale-label">Caption</div>
+        <div class="type-scale-sample" style="font-family: 'Inter', sans-serif; font-size: 13px; color: var(--ink-mute); line-height: 1.5;">Used for metadata, dates, attribution, and small UI labels.</div>
+      </div>
+      <div class="type-scale-row">
+        <div class="type-scale-label">Eyebrow</div>
+        <div class="type-scale-sample" style="font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--red); font-weight: 700;">Section label · why this work</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section class="sg-section">
+  <div class="container">
+    <div class="sg-label">05 — Components</div>
+    <h2>UI <em>components</em>.</h2>
+    <p class="sg-intro">Buttons, pills, and form elements pulled from across the site, shown together for review.</p>
+
+    <div class="components-grid">
+
+      <div class="component-card">
+        <h4>Buttons</h4>
+        <div class="stack">
+          <a href="#" class="btn">Primary <span class="btn-arrow">→</span></a>
+          <a href="#" class="btn btn-outline">Outline</a>
+          <a href="#" class="btn btn-sun">Sun accent</a>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <h4>Credential pills</h4>
+        <div class="stack" style="flex-direction: row; flex-wrap: wrap;">
+          <span class="pill-demo">J.D. Berkeley Law</span>
+          <span class="pill-demo">CA Bar</span>
+          <span class="pill-demo">OPSPOC Chair</span>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <h4>Form inputs</h4>
+        <div class="stack" style="width: 100%;">
+          <input type="email" placeholder="your@email.com" style="width: 100%; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 12px 16px; font-family: 'Inter', sans-serif; font-size: 14px; color: var(--ink);" />
+          <select style="width: 100%; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 12px 16px; font-family: 'Inter', sans-serif; font-size: 14px; color: var(--ink);">
+            <option>Select an offering...</option>
+            <option>Conflict Resolution</option>
+            <option>Restorative Justice</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="component-card">
+        <h4>Section eyebrow + title</h4>
+        <div class="section-eyebrow" style="margin-bottom: 8px;">Why this work</div>
+        <h2 style="font-family: 'Fraunces', serif; font-size: 28px; font-weight: 400; line-height: 1.15;">A new way of <em style="font-style: italic; color: var(--red); font-variation-settings: 'SOFT' 100;">being</em>.</h2>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ ICONOGRAPHY ============ -->
+<section class="sg-section alt">
+  <div class="container">
+    <div class="sg-label">06 — Icons</div>
+    <h2>Offering <em>iconography</em>.</h2>
+    <p class="sg-intro">Hand-drawn line icons, one per offering. 1.6px stroke weight, rounded caps and joins. Each is colored from the logo palette.</p>
+
+    <div class="icon-grid">
+      <div class="icon-card c-red">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="22" cy="32" r="14"/><circle cx="42" cy="32" r="14"/><path d="M28 32h8"/>
+        </svg>
+        <div class="label">Conflict</div>
+      </div>
+      <div class="icon-card c-orange">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="32" cy="32" r="20"/>
+          <circle cx="32" cy="14" r="3" fill="currentColor"/>
+          <circle cx="50" cy="32" r="3" fill="currentColor"/>
+          <circle cx="32" cy="50" r="3" fill="currentColor"/>
+          <circle cx="14" cy="32" r="3" fill="currentColor"/>
+          <circle cx="44.7" cy="19.3" r="3" fill="currentColor"/>
+          <circle cx="44.7" cy="44.7" r="3" fill="currentColor"/>
+          <circle cx="19.3" cy="44.7" r="3" fill="currentColor"/>
+          <circle cx="19.3" cy="19.3" r="3" fill="currentColor"/>
+        </svg>
+        <div class="label">RJ &amp; TJ</div>
+      </div>
+      <div class="icon-card c-amber">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 14h28l8 8v28a4 4 0 0 1-4 4H14a4 4 0 0 1-4-4V18a4 4 0 0 1 4-4z"/>
+          <path d="M42 14v8h8"/><path d="M18 32h22M18 38h22M18 44h14"/>
+        </svg>
+        <div class="label">Policy</div>
+      </div>
+      <div class="icon-card c-bay">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 52V20l40-8v32"/><path d="M12 20l40-8"/>
+          <circle cx="12" cy="54" r="2.5" fill="currentColor"/>
+          <path d="M12 36l40-6"/>
+        </svg>
+        <div class="label">Campaigns</div>
+      </div>
+      <div class="icon-card c-deep">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M32 12c-8 8-8 18 0 26 8-8 8-18 0-26z"/>
+          <path d="M20 28c-4 6-2 14 4 18 4-6 2-14-4-18z"/>
+          <path d="M44 28c4 6 2 14-4 18-4-6-2-14 4-18z"/>
+          <path d="M22 52h20"/>
+        </svg>
+        <div class="label">Ritual</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a href="index.html" class="logo">
+        <span class="logo-mark"><img src="logo-mark-light.svg" alt="" /></span>
+        <span class="logo-name">Yoana Tchoukleva</span>
+      </a>
+      <p class="footer-blurb">Realizing a community-led vision for justice in Oakland and beyond.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="bio.html">Bio</a></li>
+        <li><a href="offerings.html">Offerings</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="styleguide.html">Style Guide</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="contact.html">Get in touch</a></li>
+        <li><a href="mailto:hello@yoana.example">Email</a></li>
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="#">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="copyright">© 2026 Yoana Tchoukleva · Oakland, CA · A community-led practice</div>
+</footer>
+
+</body>
+</html>

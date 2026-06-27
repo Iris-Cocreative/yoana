@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Offerings — Yoana Tchoukleva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="logo-mark.svg">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* anchor links offset so sticky nav doesn't cover them */
+  section[id] { scroll-margin-top: 68px; }
+
+  /* Index nav */
+  .offerings-index {
+    background: url('assets/texture.jpg') center/cover, var(--bg-warm);
+    padding: 32px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .index-nav {
+    display: flex; gap: 24px; flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+  }
+  .index-nav a {
+    color: var(--ink-soft);
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: #ffffff;
+    transition: all .2s;
+  }
+  .index-nav a:hover { color: #fbf3df; background: var(--red); border-color: var(--red); }
+
+  /* Each offering section */
+  .offering-section {
+    padding: 56px 0 110px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .offering-section.alt { background: url('assets/texture.jpg') center/cover, var(--bg-warm); }
+  /* General page banner (top of page) */
+  .offerings-hero {
+    width: 100%;
+    height: 640px;
+    background-size: cover;
+    background-position: center;
+  }
+  @media (max-width: 720px) { .offerings-hero { height: 340px; } }
+
+  /* Per-offering images — contained to the text-column width, color-coded */
+  .offering-media {
+    max-width: 1180px;
+    margin: 0 auto 56px;
+    padding: 0 32px;
+  }
+  .offering-image {
+    width: 100%;
+    height: 380px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px 12px 0 0;
+    border-bottom: 6px solid var(--accent, var(--red));
+    box-shadow: 0 18px 40px -22px rgba(35,5,0,0.35);
+  }
+  @media (max-width: 720px) {
+    .offering-image { height: 240px; }
+    .offering-media { margin-bottom: 40px; }
+  }
+
+  /* Offering accent colors — ties each image to its section */
+  .offering-section.color-red    { --accent: var(--red); }
+  .offering-section.color-sun    { --accent: var(--sun-deep); }
+  .offering-section.color-green  { --accent: var(--green-deep); }
+  .offering-section.color-bay    { --accent: var(--bay); }
+  .offering-section.color-ritual { --accent: var(--gold); }
+  .offering-section .container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    align-items: start;
+  }
+  @media (max-width: 860px) {
+    .offering-section .container { grid-template-columns: 1fr; gap: 40px; }
+  }
+  .offering-side {
+    position: sticky; top: 100px;
+  }
+  .offering-icon-large {
+    width: 160px; height: 160px;
+    margin-bottom: 24px;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 12px 24px -10px rgba(60,40,20,0.18);
+  }
+
+  .offering-section h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(34px, 4vw, 48px);
+    font-weight: 400;
+    margin-bottom: 12px;
+    line-height: 1.1;
+  }
+  .offering-subtitle {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--red);
+    margin-bottom: 24px;
+    font-variation-settings: "SOFT" 100;
+  }
+  .offering-section.color-sun .offering-subtitle { color: var(--sun-deep); }
+  .offering-section.color-green .offering-subtitle { color: var(--green-deep); }
+  .offering-section.color-bay .offering-subtitle { color: var(--bay); }
+
+  .offering-body p {
+    font-size: 17px; color: var(--ink-soft); line-height: 1.7;
+    margin-bottom: 18px;
+  }
+  .offering-body p strong { color: var(--ink); font-weight: 600; }
+  .offering-body p em { font-style: italic; color: var(--ink); }
+
+  .who-its-for {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin: 32px 0;
+  }
+  .who-its-for h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--green-deep); font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .who-its-for ul {
+    list-style: none; padding: 0;
+  }
+  .who-its-for li {
+    padding: 6px 0 6px 24px;
+    position: relative;
+    font-size: 15px;
+    color: var(--ink-soft);
+  }
+  .who-its-for li::before {
+    content: "○"; position: absolute; left: 0;
+    color: var(--sun-deep);
+    font-size: 10px; top: 10px;
+  }
+
+  blockquote.callout {
+    border-left: 3px solid var(--sun);
+    padding: 12px 0 12px 24px;
+    margin: 28px 0;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+  blockquote.callout cite {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: 8px;
+    font-weight: 600;
+  }
+
+  .offering-cta-row {
+    margin-top: 32px;
+    display: flex; gap: 16px; flex-wrap: wrap;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo logo-full">
+      <span class="logo-mark"><img src="logo-mark.svg" alt="" /></span>
+      <span class="logo-name"><span>Yoana</span><span>Tchoukleva</span></span>
+    </a>
+    <ul class="nav-tabs">
+      <li><a href="bio.html">Bio</a></li>
+      <li><a href="offerings.html" class="active">Offerings</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="container">
+    <div class="section-eyebrow">Offerings</div>
+    <h1>Five practices for <em>connection &amp; transformation</em>.</h1>
+    <p class="lede">I partner with individuals, organizations, and campaigns to change policy, transform conflict, and sustain movement leaders.</p>
+  </div>
+</header>
+
+<!-- GENERAL PAGE BANNER -->
+<div class="offerings-hero" style="background-image: url('assets/yoana-facilitating-dialogue.jpg'); background-position: center 30%;" aria-label="Yoana facilitating"></div>
+
+<!-- INDEX NAV -->
+<div class="offerings-index">
+  <div class="container">
+    <ul class="index-nav">
+      <li><a href="#conflict">Conflict Resolution</a></li>
+      <li><a href="#rj">Restorative &amp; Transformative Justice</a></li>
+      <li><a href="#policy">Policy &amp; Legislative Advocacy</a></li>
+      <li><a href="#campaigns">Political Campaigning</a></li>
+      <li><a href="#ritual">Return to Ritual</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ CONFLICT RESOLUTION ============ -->
+<section class="offering-section color-red" id="conflict">
+  <div class="offering-media">
+    <div class="offering-image" style="background-image: url('assets/conflict-resolution.jpg'); background-position: center;"></div>
+  </div>
+  <div class="container">
+    <div class="offering-side">
+      <img class="offering-icon-large" src="assets/icons/01-conflict-resolution.png" alt="" />
+      <h2>Conflict Resolution</h2>
+      <p class="offering-subtitle">Transforming how we move through conflict</p>
+    </div>
+    <div class="offering-body">
+      <blockquote class="callout">
+        "Conflict is the spirit of the relationship asking itself to deepen."
+        <cite>— Malidoma Somé, Senegalese Elder</cite>
+      </blockquote>
+
+      <p>Most of us were never taught how to move through conflict in a way that <em>deepens</em>, rather than ends, relationships.</p>
+
+      <p>Unresolved conflict leads to bitter fights, broken hearts, severed belonging, and deep divisions in our movements that block systemic change.</p>
+
+      <p><strong>The good news is that we can all learn how to move through conflict.</strong> I can share with you conflict-resolution practices, or I can directly facilitate processes for the situations you are facing — as long as all parties are willing to engage.</p>
+
+      <p>Breakdowns can become breakthroughs. What has been broken can be mended.</p>
+
+      <div class="who-its-for">
+        <h4>Who this is for</h4>
+        <ul>
+          <li>Movement organizations navigating internal rupture</li>
+          <li>Co-founders or leadership teams in conflict</li>
+          <li>Coalitions where division is blocking shared work</li>
+          <li>Individuals seeking tools to repair specific relationships</li>
+        </ul>
+      </div>
+
+      <div class="offering-cta-row">
+        <a href="contact.html?subject=Conflict%20Resolution" class="btn">Inquire about conflict resolution <span class="btn-arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RJ / TJ ============ -->
+<section class="offering-section alt color-sun" id="rj">
+  <div class="offering-media">
+    <div class="offering-image" style="background-image: url('assets/RJTJ.jpg'); background-position: center 30%;"></div>
+  </div>
+  <div class="container">
+    <div class="offering-side">
+      <img class="offering-icon-large" src="assets/icons/02-restorative-justice.png" alt="" />
+      <h2>Restorative &amp; Transformative Justice</h2>
+      <p class="offering-subtitle">Transforming how we repair and end harm</p>
+    </div>
+    <div class="offering-body">
+      <blockquote class="callout">
+        More than half of survivors of violent crime in the United States do not call the police because they do not believe the system will help them.
+        <cite>— Crime Survivors Speak, The Alliance for Safety and Justice</cite>
+      </blockquote>
+
+      <p>If you have experienced harm or crime, you do not have to suffer in silence. A restorative justice process can help you feel heard, validated, and more whole.</p>
+
+      <p>If you have caused harm, you do not have to collapse in shame or repeat cycles of violence. A restorative or transformative justice process can support you in taking responsibility and repairing harm to survivors and impacted communities.</p>
+
+      <p>I have facilitated restorative justice processes both as an alternative to prosecution and completely outside the criminal legal system. <em>I have witnessed how much healing becomes possible when space is held with safety, rigor, and care for everyone involved.</em></p>
+
+      <div class="who-its-for">
+        <h4>Who this is for</h4>
+        <ul>
+          <li>Survivors of harm seeking a process that centers their voice</li>
+          <li>People who have caused harm and are ready to take responsibility</li>
+          <li>Organizations navigating internal harm that requires accountability</li>
+          <li>Prosecutors and defense attorneys exploring diversion pathways for their cases</li>
+        </ul>
+      </div>
+
+      <div class="offering-cta-row">
+        <a href="contact.html?subject=Restorative%20Justice" class="btn btn-sun">Book a free consultation <span class="btn-arrow">→</span></a>
+        <a href="publications.html" class="btn btn-outline">Read article on RJ</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POLICY ============ -->
+<section class="offering-section color-bay" id="policy">
+  <div class="offering-media">
+    <div class="offering-image" style="background-image: url('assets/policy-commission.png'); background-position: center;"></div>
+  </div>
+  <div class="container">
+    <div class="offering-side">
+      <img class="offering-icon-large" src="assets/icons/04-political-campaigning.png" alt="" />
+      <h2>Policy &amp; Legislative Advocacy</h2>
+      <p class="offering-subtitle">Transforming policies and legislation</p>
+    </div>
+    <div class="offering-body">
+      <p>No matter how much we strive to heal ourselves and address violence in our communities, we cannot achieve long-term safety or justice without addressing systemic violence.</p>
+
+      <blockquote class="callout">
+        "Nothing stops a bullet like a job."
+        <cite>— Father Greg Boyle</cite>
+      </blockquote>
+
+      <p>The absence of life-sustaining jobs in many of our communities is not accidental — it is a product of a long history of disinvestment from communities of color, lack of quality education, environmental racism, exclusionary housing, mass incarceration and more.</p>
+
+      <p>I became an attorney to help dismantle laws and policies that perpetuate systemic violence and racism, and to co-create policies that make healing possible. <strong>I understand that our struggles are linked, and so are our paths to liberation.</strong></p>
+
+      <p>I offer legal consulting, legislative advocacy, policy research, and resolution drafting on topics such as:</p>
+      <ul style="padding-left: 20px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 20px;">
+        <li>Expanding access to restorative justice and diversion programs</li>
+        <li>Advancing violence interrupters, community outreach, mental health and addiction services</li>
+        <li>Shifting public resources toward people, not bombs</li>
+        <li>Defending the civil and human rights of activists, students, and organizers</li>
+        <li>Drafting ceasefire and humanitarian aid resolutions — including on Palestine</li>
+        <li>Reparations policy research and legislative advocacy</li>
+      </ul>
+
+      <div class="who-its-for">
+        <h4>Who this is for</h4>
+        <ul>
+          <li>Legislators and policy staff drafting reform legislation</li>
+          <li>Advocacy organizations needing legal and policy research</li>
+          <li>Organizers building campaigns to bring about policy change</li>
+          <li>Local officials shaping public safety budgets and oversight</li>
+        </ul>
+      </div>
+
+      <div class="offering-cta-row">
+        <a href="contact.html?subject=Policy%20Consulting" class="btn">Request policy consulting <span class="btn-arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAMPAIGNS ============ -->
+<section class="offering-section alt color-green" id="campaigns">
+  <div class="offering-media">
+    <div class="offering-image" style="background-image: url('assets/community-vote-event.jpg'); background-position: center 40%;"></div>
+  </div>
+  <div class="container">
+    <div class="offering-side">
+      <img class="offering-icon-large" src="assets/icons/03-policy-advocacy.png" alt="" />
+      <h2>Political Campaigning</h2>
+      <p class="offering-subtitle">Transforming how we run — and how we win</p>
+    </div>
+    <div class="offering-body">
+      <p>As a delegate to the California Democratic Party and Bay Area Vice Chair of the Party's Progressive Caucus, I have seen how easily even well-intentioned people get captured by our political system.</p>
+
+      <p>Winning often requires large sums of money, raised quickly. That pressure drives candidates toward big donors and special interests. Many lose track of who they serve. <em>People-powered, corporate-free campaigns</em> usually run on heart and integrity — and still lose, again and again.</p>
+
+      <p><strong>I believe it does not have to be this way.</strong> Long-term basebuilding, deep community relationships, and values-rooted strategy can help us not only win elections, but transform how elections are run.</p>
+
+      <p>If you are running for office or building a campaign and want to center community power, reach out. I offer thought partnership and strategic support to help you transform the political game and return power to the people.</p>
+
+      <div class="who-its-for">
+        <h4>Who this is for</h4>
+        <ul>
+          <li>Candidates running corporate-free, people-powered campaigns</li>
+          <li>Campaign managers building basebuilding strategies</li>
+          <li>Democratic Party slate and caucus organizers</li>
+          <li>Movement leaders considering electoral work</li>
+        </ul>
+      </div>
+
+      <div class="offering-cta-row">
+        <a href="contact.html?subject=Campaign%20Support" class="btn">Explore campaign support <span class="btn-arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RITUAL ============ -->
+<section class="offering-section color-ritual" id="ritual">
+  <div class="offering-media">
+    <div class="offering-image" style="background-image: url('assets/ritual-redwoods.jpg'); background-position: center;"></div>
+  </div>
+  <div class="container">
+    <div class="offering-side">
+      <img class="offering-icon-large" src="assets/icons/05-return-to-ritual.png" alt="" />
+      <h2>Return to Ritual</h2>
+      <p class="offering-subtitle">Transforming our connection to our planet and ourselves</p>
+    </div>
+    <div class="offering-body">
+      <p>Are you a tired attorney struggling to sustain relationships and balance? A community organizer who cannot sleep at night? A policy advocate overwhelmed by the pace of change?</p>
+
+      <p>I have been there.</p>
+
+      <p>For those of us who feel the world's pain, "self-care" can sound shallow — and yet burning ourselves out is not an option. <strong>There is help. You are not alone.</strong></p>
+
+      <p>I offer support that is not traditional therapy or life coaching, but grounded, practical ritual work: small practices of rest and reconnection woven into busy days, and deeper ceremonial experiences in nature. Together, we can design personalized practices and rituals that help you let go, listen, and build a sustainable path for your work and your life.</p>
+
+      <div class="who-its-for">
+        <h4>Who this is for</h4>
+        <ul>
+          <li>Movement leaders, organizers, and frontline workers</li>
+          <li>Lawyers, advocates, and policy professionals carrying secondary trauma</li>
+          <li>Anyone seeking a deeper relationship with their ancestors and the Earth</li>
+          <li>Teams looking to integrate ceremony and rest into their work culture</li>
+        </ul>
+      </div>
+
+      <div class="offering-cta-row">
+        <a href="contact.html?subject=Ritual%20Work" class="btn">Learn about ritual work <span class="btn-arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section style="padding: 110px 0; background: linear-gradient(135deg, var(--green-deep) 0%, #335f6a 50%, var(--bay-deep) 100%); color: #fbf3df; text-align: center;">
+  <div class="container">
+    <div class="narrow">
+      <div class="section-eyebrow" style="color: var(--sun);">Begin a conversation</div>
+      <h2 class="section-title" style="color: #fbf3df;">Not sure which path is <em style="color: var(--sun); font-variation-settings: 'SOFT' 100;">right for you?</em></h2>
+      <p style="font-family: 'Fraunces', serif; font-size: 22px; color: #d4c19f; font-style: italic; margin-bottom: 36px;">That's okay. Reach out and we'll figure it out together.</p>
+      <a href="contact.html" class="btn btn-sun">Start a conversation <span class="btn-arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a href="index.html" class="logo">
+        <span class="logo-mark"><img src="logo-mark-light.svg" alt="" /></span>
+        <span class="logo-name">Yoana Tchoukleva</span>
+      </a>
+      <p class="footer-blurb">Realizing a community-led vision for justice in Oakland and beyond.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="bio.html">Bio</a></li>
+        <li><a href="offerings.html">Offerings</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="contact.html">Get in touch</a></li>
+        <li><a href="mailto:Yoana.Tchoukleva@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/ioanatchoukleva/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.instagram.com/yoana.tch/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="copyright">© <span class="cr-year">2026</span> Yoana Tchoukleva · Oakland, CA · A community-led practice</div>
+</footer>
+
+<script>document.querySelectorAll('.cr-year').forEach(function(el){el.textContent=new Date().getFullYear();});</script>
+
+</body>
+</html>
