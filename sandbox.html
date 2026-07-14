@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sandbox — Yoana Tchoukleva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="logo-mark.svg">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .sandbox-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fffaeb;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 28px;
+  }
+  .sandbox-badge::before { content: "🧪"; font-size: 11px; }
+
+  .sandbox-hero {
+    background: linear-gradient(135deg, var(--green-deep) 0%, #335f6a 50%, var(--bay-deep) 100%);
+    padding: 110px 32px 90px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .sandbox-hero::before {
+    content: ""; position: absolute;
+    top: -80px; right: -80px; width: 280px; height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,196,101,0.2) 0%, transparent 65%);
+  }
+  .sandbox-hero::after {
+    content: ""; position: absolute;
+    bottom: -60px; left: -60px; width: 240px; height: 240px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(231,74,45,0.2) 0%, transparent 65%);
+  }
+  .sandbox-hero .inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+  .sandbox-hero h1 {
+    font-size: clamp(40px, 6vw, 72px);
+    color: #fffaeb;
+    margin-bottom: 20px;
+  }
+  .sandbox-hero h1 em {
+    font-style: italic;
+    color: var(--sun);
+    font-variation-settings: "SOFT" 100, "WONK" 1;
+  }
+  .sandbox-hero p {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: #d4c9a8;
+    line-height: 1.55;
+    margin-bottom: 36px;
+  }
+
+  .sandbox-cards {
+    padding: 88px 0;
+    background: var(--bg);
+  }
+  .sandbox-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 44px;
+  }
+  @media (max-width: 860px) { .sandbox-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .sandbox-grid { grid-template-columns: 1fr; } }
+  .sandbox-card {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 36px 30px;
+  }
+  .sandbox-card .icon { font-size: 30px; margin-bottom: 18px; }
+  .sandbox-card h3 {
+    font-size: 21px;
+    margin-bottom: 10px;
+  }
+  .sandbox-card p {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  .sandbox-quote {
+    background: var(--bg-warm);
+    padding: 90px 0;
+    text-align: center;
+  }
+  .sandbox-quote blockquote {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(22px, 3vw, 34px);
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.4;
+    max-width: 720px;
+    margin: 0 auto 20px;
+    font-weight: 300;
+  }
+  .sandbox-quote cite {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  .sandbox-cta {
+    padding: 90px 0;
+    text-align: center;
+  }
+  .sandbox-cta h2 { margin-bottom: 14px; }
+  .sandbox-cta p {
+    font-size: 17px;
+    color: var(--ink-soft);
+    margin-bottom: 36px;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo logo-full">
+      <span class="logo-mark"><img src="logo-mark.svg" alt="" /></span>
+      <span class="logo-name"><span>Yoana</span><span>Tchoukleva</span></span>
+    </a>
+    <ul class="nav-tabs">
+      <li><a href="bio.html">Bio</a></li>
+      <li><a href="offerings.html">Offerings</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="sandbox-hero">
+  <div class="inner">
+    <div class="sandbox-badge">Sandbox Page</div>
+    <h1>A page for <em>testing</em>.</h1>
+    <p>This page exists to confirm that new pages can be created, styled to match the site, and published — without touching anything else on yoanatchoukleva.com.</p>
+    <a href="contact.html" class="btn btn-sun">Get in touch <span class="btn-arrow">→</span></a>
+  </div>
+</header>
+
+<!-- CARDS -->
+<section class="sandbox-cards">
+  <div class="container">
+    <div class="section-eyebrow">What this page proves</div>
+    <h2 class="section-title">A quick <em>style check</em></h2>
+    <div class="sandbox-grid">
+      <div class="sandbox-card">
+        <div class="icon">🎨</div>
+        <h3>Shared styles</h3>
+        <p>Uses the same fonts, colors, and buttons as the rest of the site — nothing custom, all pulled from styles.css.</p>
+      </div>
+      <div class="sandbox-card">
+        <div class="icon">🧩</div>
+        <h3>Same components</h3>
+        <p>Nav, footer, buttons, and section headings are the exact building blocks used on the bio, offerings, and contact pages.</p>
+      </div>
+      <div class="sandbox-card">
+        <div class="icon">🚀</div>
+        <h3>Live when published</h3>
+        <p>Once merged, this page is reachable at its own URL — a safe place to preview new layouts before adding them elsewhere.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="sandbox-quote">
+  <div class="container">
+    <blockquote>"Small experiments make room for bigger changes to happen safely."</blockquote>
+    <cite>Sandbox Page</cite>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sandbox-cta">
+  <div class="container">
+    <h2 class="section-title">Looks <em>right?</em></h2>
+    <p>If this matches the rest of the site, the workflow is working end to end.</p>
+    <a href="index.html" class="btn btn-outline">Back to homepage <span class="btn-arrow">→</span></a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a href="index.html" class="logo">
+        <span class="logo-mark"><img src="logo-mark-light.svg" alt="" /></span>
+        <span class="logo-name">Yoana Tchoukleva</span>
+      </a>
+      <p class="footer-blurb">Realizing a community-led vision for justice in Oakland and beyond.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="bio.html">Bio</a></li>
+        <li><a href="offerings.html">Offerings</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="contact.html">Get in touch</a></li>
+        <li><a href="mailto:Yoana.Tchoukleva@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/ioanatchoukleva/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.instagram.com/yoana.tch/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="copyright">
+    © <span class="cr-year">2026</span> Yoana Tchoukleva · Oakland, CA · A community-led practice
+  </div>
+</footer>
+
+<script>document.querySelectorAll('.cr-year').forEach(function(el){el.textContent=new Date().getFullYear();});</script>
+
+</body>
+</html>
