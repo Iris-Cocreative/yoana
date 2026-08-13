@@ -122,7 +122,8 @@ footer .logo .logo-name { color: var(--bg) !important; }
 .nav-tabs a:hover { color: var(--red); border-bottom-color: var(--sun); }
 .nav-tabs a.active { color: var(--red); border-bottom-color: var(--red); }
 @media (max-width: 760px) {
-  .nav-tabs { gap: 18px; }
+  .nav-inner { flex-wrap: wrap; row-gap: 10px; min-height: 0; padding: 12px 20px; }
+  .nav-tabs { flex: 1 1 100%; justify-content: center; flex-wrap: wrap; gap: 10px 18px; }
   .nav-tabs a { font-size: 11px; }
   .logo .logo-name { display: none; }
 }
