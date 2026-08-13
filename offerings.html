@@ -12,6 +12,9 @@
 <style>
   /* anchor links offset so sticky nav doesn't cover them */
   section[id] { scroll-margin-top: 68px; }
+  @media (max-width: 760px) {
+    section[id] { scroll-margin-top: 145px; }
+  }
 
   /* Index nav */
   .offerings-index {
@@ -89,6 +92,9 @@
   }
   .offering-side {
     position: sticky; top: 100px;
+  }
+  @media (max-width: 860px) {
+    .offering-side { position: static; }
   }
   .offering-icon-large {
     width: 160px; height: 160px;
