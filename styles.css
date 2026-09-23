@@ -182,7 +182,8 @@ section { padding: 88px 0; }
 }
 
 .why p {
-  font-size: 15px;
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
 }
 
 /* ============================================================
