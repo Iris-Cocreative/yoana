@@ -369,10 +369,7 @@
     max-width: 1180px;
     margin: 0 auto;
     padding: 0 32px;
-    overflow-x: auto;
-    scrollbar-width: none;
   }
-  .credentials-strip-inner::-webkit-scrollbar { display: none; }
   .cs-label {
     font-size: 9px; letter-spacing: 0.26em; text-transform: uppercase;
     color: #fbf3df; font-weight: 700;
@@ -383,7 +380,24 @@
     display: flex; align-items: center;
     white-space: nowrap;
   }
-  .credentials-strip-inner > span:not(.cs-label) {
+  .cs-viewport {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 32px, #000 calc(100% - 32px), transparent);
+            mask-image: linear-gradient(to right, transparent, #000 32px, #000 calc(100% - 32px), transparent);
+  }
+  .cs-track {
+    display: flex;
+    width: max-content;
+    animation: cs-roll 60s linear infinite;
+  }
+  .cs-viewport:hover .cs-track { animation-play-state: paused; }
+  @keyframes cs-roll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .cs-track > span {
     font-size: 12px;
     font-family: 'Fraunces', serif;
     font-style: italic;
@@ -394,7 +408,11 @@
     flex-shrink: 0;
     display: flex; align-items: center;
   }
-  .credentials-strip-inner > span:not(.cs-label):last-child { border-right: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .cs-viewport { overflow-x: auto; scrollbar-width: none; }
+    .cs-viewport::-webkit-scrollbar { display: none; }
+    .cs-track { animation: none; }
+  }
 </style>
 </head>
 <body>
@@ -431,6 +449,8 @@
 <div class="credentials-strip">
   <div class="credentials-strip-inner">
     <span class="cs-label">Credentials &amp; Roles</span>
+    <div class="cs-viewport">
+    <div class="cs-track">
     <span>Attorney</span>
     <span>Lecturer at Berkeley Law</span>
     <span>Restorative Justice Circle Keeper</span>
@@ -446,6 +466,8 @@
     <span>CA Democratic Party Delegate</span>
     <span>Bay Area Vice Chair · CA Dem Progressive Caucus</span>
     <span>Co-Chair · CA Democrats for Justice in Palestine</span>
+    </div>
+    </div>
   </div>
 </div>
 
@@ -594,6 +616,16 @@
   </div>
 </footer>
 
+<script>
+// Credentials strip: duplicate the list once so the rolling animation loops seamlessly.
+document.querySelectorAll('.cs-track').forEach(function(track){
+  Array.prototype.slice.call(track.children).forEach(function(item){
+    var copy = item.cloneNode(true);
+    copy.setAttribute('aria-hidden', 'true');
+    track.appendChild(copy);
+  });
+});
+</script>
 <script>document.querySelectorAll('.cr-year').forEach(function(el){el.textContent=new Date().getFullYear();});</script>
 
 </body>
